@@ -55,10 +55,13 @@ class Game(Window): #Classe Jeu héritée de la classe Fenêtre (gestion de l'in
     def spawnBricks(self): #fonction qui gere l'apparition des bricks
 
         #pas d'entrée
-        #en sortie : une liste de toute les bricks
+        #en sortie : une liste de listes des bricks et leur représentation sur le canvas
 
         self.lstBrick=[]
-        
+        for i in range(3, 10):
+            brick = Brick(i*100, 200, 60, 40)
+            brickDisp = self.brickDisplay(brick.x, brick.y, brick.w, brick.h)
+            self.lstBrick.append([brick, brickDisp])
         return self.lstBrick
     
     def spawnBall(self): #fonction qui gere l'apparition de la ball
@@ -72,6 +75,10 @@ class Game(Window): #Classe Jeu héritée de la classe Fenêtre (gestion de l'in
         return self.ball
 
     def moveBall(self): #fonction qui gere le déplacement de la balle
+
+        #pas d'entrée
+        #pas de sortie
+        
         if self.ball.xSpeed == self.ball.ySpeed == 0:
             self.ball.xSpeed = 5 #vers la droite
             self.ball.ySpeed = 5 #vers le bas
